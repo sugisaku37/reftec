@@ -1,0 +1,16 @@
+C:\Users\SugimuraAkinori\source\learn\Repos\Refactoring\RentalVideo\bin\Debug\net5.0\RentalVideo.exe
+C:\Users\SugimuraAkinori\source\learn\Repos\Refactoring\RentalVideo\bin\Debug\net5.0\RentalVideo.deps.json
+C:\Users\SugimuraAkinori\source\learn\Repos\Refactoring\RentalVideo\bin\Debug\net5.0\RentalVideo.runtimeconfig.json
+C:\Users\SugimuraAkinori\source\learn\Repos\Refactoring\RentalVideo\bin\Debug\net5.0\RentalVideo.runtimeconfig.dev.json
+C:\Users\SugimuraAkinori\source\learn\Repos\Refactoring\RentalVideo\bin\Debug\net5.0\RentalVideo.dll
+C:\Users\SugimuraAkinori\source\learn\Repos\Refactoring\RentalVideo\bin\Debug\net5.0\ref\RentalVideo.dll
+C:\Users\SugimuraAkinori\source\learn\Repos\Refactoring\RentalVideo\bin\Debug\net5.0\RentalVideo.pdb
+C:\Users\SugimuraAkinori\source\learn\Repos\Refactoring\RentalVideo\obj\Debug\net5.0\RentalVideo.csprojAssemblyReference.cache
+C:\Users\SugimuraAkinori\source\learn\Repos\Refactoring\RentalVideo\obj\Debug\net5.0\RentalVideo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SugimuraAkinori\source\learn\Repos\Refactoring\RentalVideo\obj\Debug\net5.0\RentalVideo.AssemblyInfoInputs.cache
+C:\Users\SugimuraAkinori\source\learn\Repos\Refactoring\RentalVideo\obj\Debug\net5.0\RentalVideo.AssemblyInfo.cs
+C:\Users\SugimuraAkinori\source\learn\Repos\Refactoring\RentalVideo\obj\Debug\net5.0\RentalVideo.csproj.CoreCompileInputs.cache
+C:\Users\SugimuraAkinori\source\learn\Repos\Refactoring\RentalVideo\obj\Debug\net5.0\RentalVideo.dll
+C:\Users\SugimuraAkinori\source\learn\Repos\Refactoring\RentalVideo\obj\Debug\net5.0\ref\RentalVideo.dll
+C:\Users\SugimuraAkinori\source\learn\Repos\Refactoring\RentalVideo\obj\Debug\net5.0\RentalVideo.pdb
+C:\Users\SugimuraAkinori\source\learn\Repos\Refactoring\RentalVideo\obj\Debug\net5.0\RentalVideo.genruntimeconfig.cache
