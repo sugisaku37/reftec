@@ -113,7 +113,7 @@ namespace RentalVideo
                 double thisAmount = 0;
                 Rental each = (Rental)rentals.Current;
 
-                thisAmount = amountFor(each);
+                thisAmount = each.getCharge();
 
                 //レンタルポイントを加算
                 frequentRenterPoints++;
