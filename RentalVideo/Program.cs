@@ -35,18 +35,31 @@ namespace RentalVideo
         public const int NEW_RELEASE = 1;
 
         private string _title;
-        private int _priceCode;
+        private Price _price;
 
         public Movie(string title, int priceCode){
             _title = title;
-            _priceCode = priceCode;
+            setPriceCode(priceCode);
         }
 
         public int getPriceCode(){
-            return _priceCode;
+            return _price.getPriceCode();
         }
-        public void setpriceCode(int arg){
-            _priceCode = arg;
+        public void setPriceCode(int arg){
+            switch (arg)
+            {
+                case REGULAR:
+                    _price = new RegularPrice();
+                    break;
+                case CHILDRENS:
+                    _price = new ChildrensPrice();
+                    break;
+                case NEW_RELEASE:
+                    _price = new NewReleasePrice();
+                    break;
+                default:
+                    throw new InvalidOperationException("不正な料金コード");
+            }
         }
         public string getTitle(){
             return _title;
@@ -54,36 +67,63 @@ namespace RentalVideo
 
         internal double getCharge(int daysRented)
         {
-            double result = 0;
-            switch (getPriceCode())
-            {
-                case Movie.REGULAR:
-                    result += 2;
-                    if (daysRented > 2)
-                        result += (daysRented - 2) * 1.5;
-                    break;
-                case Movie.NEW_RELEASE:
-                    result += daysRented * 3;
-                    break;
-                case Movie.CHILDRENS:
-                    result += 1.5;
-                    if (daysRented > 3)
-                        result += (daysRented - 3) * 1.5;
-                    break;
-            }
-            return result;
+            return _price.getCharge(daysRented);
         }
 
         internal int getFrequentRenterPoints(int daysRented)
         {
-            if ((getPriceCode() == Movie.NEW_RELEASE) && daysRented > 1)
-            {
-                return 2;
-            }
-            else
-            {
-                return 1;
-            }
+            return _price.getFrequentRenterPoints(daysRented);
+        }
+    }
+
+    abstract class Price {
+        abstract internal int getPriceCode();
+        abstract internal double getCharge(int daysRented);
+        internal virtual int getFrequentRenterPoints(int daysRented)
+        {
+            return 1;
+        }
+    }
+
+    class ChildrensPrice : Price {
+        internal override int getPriceCode(){
+            return Movie.CHILDRENS;
+        }
+        internal override double getCharge(int daysRented)
+        {
+            double result = 1.5;
+            if (daysRented > 3)
+                result += (daysRented - 3) * 1.5;
+            return result;
+        }
+    }
+
+    class NewReleasePrice : Price
+    {
+        internal override int getPriceCode()
+        {
+            return Movie.NEW_RELEASE;
+        }
+        internal override double getCharge(int daysRented)
+        {
+            return daysRented * 3;
+        }
+        internal override int getFrequentRenterPoints(int daysRented){
+            return (daysRented > 1) ? 2 : 1;
+        }
+    }
+
+    class RegularPrice : Price
+    {
+        internal override int getPriceCode()
+        {
+            return Movie.REGULAR;
+        }
+        internal override double getCharge(int daysRented){
+            double result = 2;
+            if (daysRented > 2)
+                result += (daysRented - 2) * 1.5;
+            return result;
         }
     }
 
