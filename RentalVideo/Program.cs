@@ -24,7 +24,8 @@ namespace RentalVideo
             customer.addRental(rental2);
             customer.addRental(rental3);
 
-            Console.WriteLine(customer.statement());
+            //Console.WriteLine(customer.statement());
+            Console.WriteLine(customer.htmlStatement());
         }
     }
 
@@ -126,6 +127,24 @@ namespace RentalVideo
             result += "You earned " + getTotalFrequentRenterPoints().ToString() + " frequent renter points";
             return result;
         }
+
+        public string htmlStatement()
+        {
+            IEnumerator rentals = _rentals.GetEnumerator();
+            string result = "<H1>Rental Record for <EM>" + getName() + "</EM></H1><P>\n";
+            while (rentals.MoveNext())
+            {
+                Rental each = (Rental)rentals.Current;
+
+                //この貸し出しに関する数値の表示
+                result += each.getMovie().getTitle() + ": " + each.getCharge().ToString() + "<BR>\n";
+            }
+            //フッダ部分の追加
+            result += "<P>You owe <EM>" + getTotalCharge().ToString() + "</EM><P>\n";
+            result += "On this rental you earned <EM>" + getTotalFrequentRenterPoints().ToString() + "</EM> frequent renter points<P>";
+            return result;
+        }
+
         private double amountFor(Rental aRental){
             return aRental.getCharge();
         }
