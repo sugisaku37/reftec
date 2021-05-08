@@ -87,6 +87,14 @@ namespace RentalVideo
             }
             return result;
         }
+
+        internal int getFrequentRenterPoints(){
+            if((getMovie().getPriceCode() == Movie.NEW_RELEASE) && getDaysRented() > 1){
+                return 2;
+            } else{
+                return 1;
+            }
+        }
     }
 
     public class Customer{
@@ -111,12 +119,7 @@ namespace RentalVideo
             string result = "Rental Record for " + getName() + "\n";
             while(rentals.MoveNext()){
                 Rental each = (Rental)rentals.Current;
-
-                //レンタルポイントを加算
-                frequentRenterPoints++;
-                //新作を二日以上借りた場合はボーナスポイント
-                if((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) && 
-                    each.getDaysRented() > 1) frequentRenterPoints++;
+                frequentRenterPoints += each.getFrequentRenterPoints();
 
                 //この貸し出しに関する数値の表示
                 result += "\t" + each.getMovie().getTitle() + "\t" + each.getCharge().ToString() + "\n";
