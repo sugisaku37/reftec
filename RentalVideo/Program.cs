@@ -113,7 +113,6 @@ namespace RentalVideo
         }
 
         public string statement(){
-            double totalAmount = 0;
             int frequentRenterPoints = 0;
             IEnumerator rentals = _rentals.GetEnumerator();
             string result = "Rental Record for " + getName() + "\n";
@@ -123,15 +122,35 @@ namespace RentalVideo
 
                 //この貸し出しに関する数値の表示
                 result += "\t" + each.getMovie().getTitle() + "\t" + each.getCharge().ToString() + "\n";
-                totalAmount += each.getCharge();
             }
             //フッダ部分の追加
-            result += "Amount owed is " + totalAmount.ToString() + "\n";
-            result += "You earned " + frequentRenterPoints.ToString() + " frequent renter points";
+            result += "Amount owed is " + getTotalCharge().ToString() + "\n";
+            result += "You earned " + getTotalFrequentRenterPoints().ToString() + " frequent renter points";
             return result;
         }
         private double amountFor(Rental aRental){
             return aRental.getCharge();
+        }
+
+        private double getTotalCharge(){
+            double result = 0;
+            IEnumerator rentals = _rentals.GetEnumerator();
+            while(rentals.MoveNext()){
+                Rental each = (Rental)rentals.Current;
+                result += each.getCharge();
+            }
+            return result;
+        }
+
+        private int getTotalFrequentRenterPoints(){
+            int result = 0;
+            IEnumerator rentals = _rentals.GetEnumerator();
+            while (rentals.MoveNext())
+            {
+                Rental each = (Rental)rentals.Current;
+                result += each.getFrequentRenterPoints();
+            }
+            return result;
         }
     }
 }
