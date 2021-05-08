@@ -113,12 +113,10 @@ namespace RentalVideo
         }
 
         public string statement(){
-            int frequentRenterPoints = 0;
             IEnumerator rentals = _rentals.GetEnumerator();
             string result = "Rental Record for " + getName() + "\n";
             while(rentals.MoveNext()){
                 Rental each = (Rental)rentals.Current;
-                frequentRenterPoints += each.getFrequentRenterPoints();
 
                 //この貸し出しに関する数値の表示
                 result += "\t" + each.getMovie().getTitle() + "\t" + each.getCharge().ToString() + "\n";
