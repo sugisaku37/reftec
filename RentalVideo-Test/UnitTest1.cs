@@ -7,7 +7,7 @@ namespace RentalVideo_Test
     public class UnitTest1
     {   
         [TestMethod]
-        public void StatementTest()
+        public void 紙ベースの請求書のテスト()
         {
             Movie movie1 = new Movie("ターミネータ2", Movie.REGULAR);
             Movie movie2 = new Movie("タイタニック", Movie.NEW_RELEASE);
@@ -33,7 +33,7 @@ namespace RentalVideo_Test
         }
 
         [TestMethod]
-        public void HtmlstatementTest()
+        public void HTML形式の請求書のテスト()
         {
             Movie movie1 = new Movie("ターミネータ2", Movie.REGULAR);
             Movie movie2 = new Movie("タイタニック", Movie.NEW_RELEASE);
